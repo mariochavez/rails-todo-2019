@@ -14,6 +14,7 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
 
     json_response = JSON.parse(response.body, symbolize_names: true)
     assert json_response.dig(:id).present?
+    assert json_response.dig(:html).present?
   end
 
   test "POST /todos (failure)" do

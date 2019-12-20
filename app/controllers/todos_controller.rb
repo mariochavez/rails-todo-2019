@@ -1,12 +1,16 @@
 class TodosController < ApplicationController
   def index
     @todos = Todo.order(created_at: :desc)
+    @todo = Todo.new
   end
 
   def create
     todo = Todo.new(todo_params)
 
-    return render(json: {id: todo.id}, status: :created) if todo.save
+    if todo.save
+      todo_html = render_to_string(partial: "todos/todo", locals: {todo: todo}, formats: [:html])
+      return render(json: {id: todo.id, html: todo_html}, status: :created)
+    end
 
     render json: {errors: todo.errors.to_h}, status: :unprocessable_entity
   end

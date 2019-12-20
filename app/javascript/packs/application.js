@@ -15,6 +15,9 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-console.log('Hello World from Webpacker')
+require("@rails/ujs").start()
+
+import "../stylesheets/application.scss"
+import "../images/logo.png"
 
 import "controllers"
