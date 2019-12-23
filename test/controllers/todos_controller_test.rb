@@ -26,23 +26,6 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
     assert json_response.dig(:errors, :name).present?
   end
 
-  test "PUT /todos/:id (success)" do
-    todo = todos(:todo)
-    put todo_path(todo), params: {todo: {name: "Test todo"}}, as: :json
-
-    assert_response :no_content
-  end
-
-  test "PUT /todos/:id (failure)" do
-    todo = todos(:todo)
-    put todo_path(todo), params: {todo: {name: ""}}, as: :json
-
-    assert_response :unprocessable_entity
-
-    json_response = JSON.parse(response.body, symbolize_names: true)
-    assert json_response.dig(:errors, :name).present?
-  end
-
   test "DELETE /todos/:id" do
     todo = todos(:todo)
 

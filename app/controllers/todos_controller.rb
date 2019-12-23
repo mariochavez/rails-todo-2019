@@ -15,14 +15,6 @@ class TodosController < ApplicationController
     render json: {errors: todo.errors.to_h}, status: :unprocessable_entity
   end
 
-  def update
-    todo = Todo.find_by(id: params[:id])
-
-    return render(plain: "", status: :no_content) if todo.update(todo_params)
-
-    render json: {errors: todo.errors.to_h}, status: :unprocessable_entity
-  end
-
   def destroy
     todo = Todo.find_by(id: params[:id])
     todo.destroy
