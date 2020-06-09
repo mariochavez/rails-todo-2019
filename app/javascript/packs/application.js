@@ -21,3 +21,4 @@ import "../stylesheets/application.scss"
 import "../images/logo.png"
 
 import "controllers"
+import "channels"

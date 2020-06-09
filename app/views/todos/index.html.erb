@@ -1,15 +1,14 @@
 <div class="ToDo">
   <%= image_tag asset_pack_path("media/images/logo.png"), class: "Logo", alt: "Rails logo" %>
   <h1 class="ToDo-Header">Rails To Do</h1>
-  <div class="ToDo-Container" data-controller="todo">
-    <div class="ToDo-Content" data-target="todo.todos">
+  <div class="ToDo-Container">
+    <div id="todo-list" class="ToDo-Content">
       <%= render @todos %>
     </div>
 
     <div class="ToDoInput">
-      <%= form_with model: @todo, local: false,
-        data: { action: "ajax:beforeSend->todo#validateSubmit ajax:error->todo#errorResult ajax:success->todo#successResult" } do |form| %>
-        <%= form.text_field :name, data: { target: "todo.field" } %>
+      <%= form_with model: @todo, local: false do |form| %>
+        <%= form.text_field :name %>
         <%= form.submit "+", class: "ToDo-Add" %>
       <% end %>
     </div>

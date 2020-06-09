@@ -1,9 +1,8 @@
-<div class="ToDoItem" data-controller="todo-delete" data-target="todo-delete.item">
+<div id="<%= dom_id(todo) %>" class="ToDoItem">
   <p class="ToDoItem-Text"><%= todo.name %></p>
   <%= button_to "-", todo_path(todo.id),
       method: :delete,
       remote: true,
-      form: { data: { action: "ajax:success->todo-delete#successResult ajax:error->todo-delete#errorResult" } },
       class: "ToDoItem-Delete"
      %>
 </div>
